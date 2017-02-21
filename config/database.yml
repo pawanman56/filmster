@@ -1,0 +1,19 @@
+default: &default
+      adapter: postgresql
+      encoding: unicode
+      pool: 5
+      username: username
+      password: password
+      host:     <%= ENV['IP'] %>
+
+development:
+  <<: *default
+  database: flimster_development
+
+test:
+  <<: *default
+  database: flimster_test
+
+production:
+  <<: *default
+  database: flimster_production
