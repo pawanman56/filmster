@@ -24,9 +24,13 @@ $(function(){
             htmlString = `<div class="alert alert-danger text-center" role="alert">${data["Error"]}</div>`;
         } else {
             data["Search"].forEach(function(movie){
-                htmlString += `<img src=${movie["Poster"] == "N/A" ? "assets/default_image.png" : movie["Poster"]} data-id="${movie['imdbID']}" />
-                                <p>${movie["Title"]}</p>
-                                <p>${movie["Year"]}</p>`;
+                htmlString += `<div class="box panel panel-default pull-left">
+                                    <img src=${movie["Poster"] == "N/A" ? "assets/default_image.png" : movie["Poster"]} data-id="${movie['imdbID']}" />
+                                        <div class="panel-body">
+                                            <p>${movie["Title"]}</p>
+                                            <p>${movie["Year"]}</p>
+                                        </div>
+                                </div>`;
             });
         }
         
@@ -53,23 +57,28 @@ $(function(){
         
         container.empty();
         
-        htmlString += `<img src=${data["Poster"] == "N/A" ? "assets/default_image.png" : data["Poster"]} data-id="${data['imdbID']}" />
-                        <p>Title: ${data["Title"]}</p>
-                        <p>Year: ${data["Year"]}</p><hr />
-                        <p>Actors: ${data["Actors"]}</p>
-                        <p>Awards: ${data["Awards"]}</p>
-                        <p>Country: ${data["Country"]}</p>
-                        <p>Director: ${data["Director"]}</p>
-                        <p>Genre: ${data["Genre"]}</p>
-                        <p>Language: ${data["Language"]}</p>
-                        <p>Metascore: ${data["Metascore"]}</p>
-                        <p>Plot: ${data["Plot"]}</p>
-                        <p>Rated: ${data["Rated"]}</p>
-                        <p>Released: ${data["Released"]}</p>
-                        <p>Runtime: ${data["Runtime"]}</p>
-                        <p>Writer: ${data["Writer"]}</p>
-                        <p>omrvRating: ${data["imdbRating"]}</p>
-                        <p>omrvVotes: ${data["imdbVotes"]}</p>`;
+        htmlString +=
+        `<div class="col-xs-4 col-md-4">
+            <img src=${data["Poster"] == "N/A" ? "assets/default_image.png" : data["Poster"]} data-id="${data['imdbID']}" />
+        </div>
+        <div class="col-xs-6 col-md-8">
+            <h1>${data["Title"]}</h1>
+            <h1>${data["Year"]}</h1><hr />
+            <p>Actors: ${data["Actors"]}</p>
+            <p>Awards: ${data["Awards"]}</p>
+            <p>Country: ${data["Country"]}</p>
+            <p>Director: ${data["Director"]}</p>
+            <p>Genre: ${data["Genre"]}</p>
+            <p>Language: ${data["Language"]}</p>
+            <p>Metascore: ${data["Metascore"]}</p>
+            <p>Plot: ${data["Plot"]}</p>
+            <p>Rated: ${data["Rated"]}</p>
+            <p>Released: ${data["Released"]}</p>
+            <p>Runtime: ${data["Runtime"]}</p>
+            <p>Writer: ${data["Writer"]}</p>
+            <p>omrvRating: ${data["imdbRating"]}</p>
+            <p>omrvVotes: ${data["imdbVotes"]}</p>
+        </div>`;
         
         container.append(htmlString);
     }
