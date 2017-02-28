@@ -37,7 +37,7 @@ $(function(){
         container.append(htmlString);
     }
     
-    $("#movies").on('click', 'img', function(e){
+    $("#movies").on('click', 'img', function(e){  
         e.preventDefault();
         
         let id = $(e.target).data('id');
@@ -64,21 +64,30 @@ $(function(){
         <div class="col-xs-6 col-md-8">
             <h1>${data["Title"]}</h1>
             <h1>${data["Year"]}</h1><hr />
-            <p>Actors: ${data["Actors"]}</p>
-            <p>Awards: ${data["Awards"]}</p>
-            <p>Country: ${data["Country"]}</p>
-            <p>Director: ${data["Director"]}</p>
-            <p>Genre: ${data["Genre"]}</p>
-            <p>Language: ${data["Language"]}</p>
-            <p>Metascore: ${data["Metascore"]}</p>
-            <p>Plot: ${data["Plot"]}</p>
-            <p>Rated: ${data["Rated"]}</p>
-            <p>Released: ${data["Released"]}</p>
-            <p>Runtime: ${data["Runtime"]}</p>
-            <p>Writer: ${data["Writer"]}</p>
-            <p>omrvRating: ${data["imdbRating"]}</p>
-            <p>omrvVotes: ${data["imdbVotes"]}</p>
-        </div>`;
+            <p><label>Actors: </label> ${data["Actors"]}<br />
+            <label>Awards: </label> ${data["Awards"]}<br />
+            <label>Country: </label> ${data["Country"]}<br />
+            <label>Director: </label> ${data["Director"]}<br />
+            <label>Genre: </label> ${data["Genre"]}<br />
+            <label>Language: </label> ${data["Language"]}<br />
+            <label>Metascore: </label> ${data["Metascore"]}<br />
+            <label>Plot: </label> ${data["Plot"]}<br />
+            <label>Rated: </label> ${data["Rated"]}<br />
+            <label>Released: </label> ${data["Released"]}<br />
+            <label>Runtime: </label> ${data["Runtime"]}<br />
+            <label>Writer: </label> ${data["Writer"]}<br />
+            <label>OMRv Rating: </label> ${data["imdbRating"]}<br />
+            <label>OMRv Votes: </label> ${data["imdbVotes"]}</p><hr />
+            
+            <form id="rating-form" action="/reviews" method="POST">
+                <input type="hidden" name="authenticity_token" value=${window._token} />
+                <input type="hidden" name="imdbid" value=${data["imdbID"]} />
+                <textarea name= "review[comment]" class="form-control" placeholder="Your movie review"/>
+                <br />
+                <input type="submit" class="btn btn-success pull-right" />
+            </form>
+        </div>
+        `;
         
         container.append(htmlString);
     }

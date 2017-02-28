@@ -17,13 +17,15 @@
     <div class="col-xs-12 col-xs-8">
         <div class="container">
             <div id="movies">
-                <% @movie.each do |m| %>
+                <% @movies.each do |m| %>
                     <div class="box panel panel-default pull-left">
-                        <%= link_to image_tag(m.poster == "N/A" ? "default_image.png" : m.poster), movie_path(m.id) %>
-                        <div class="panel-body">
-                            <p><%= m.title %></p>
-                            <p><%= m.year %></p>
-                        </div>
+                        <%= link_to movie_path(m.id) %>
+                            <%= image_tag m.poster %>
+                        <% end %>
+                            <div class="panel-body">
+                                <p><%= m.title %></p>
+                                <p><%= m.year %></p>
+                            </div>
                     </div>
                 <% end %>
             </div>

@@ -1,0 +1,51 @@
+<div class="col-xs-12 col-xs-8">
+    <div class="container">
+        <div id="movies">
+            <div class="col-xs-4 col-md-4">
+                <%= image_tag(@movie.poster == "N/A" ? "default_image.png" : @movie.poster) %>
+            </div>
+            
+            <div class="col-xs-6 col-md-8">
+                <h1><%= @movie.title %></h1>
+                <h1><%= @movie.year %></h1><hr />
+                <p><label>Actors: </label> <%= @movie.actors %><br />
+                <label>Awards: </label> <%= @movie.awards %><br />
+                <label>Country: </label> <%= @movie.country %><br />
+                <label>Director: </label> <%= @movie.director %><br />
+                <label>Genre: </label> <%= @movie.genre %><br />
+                <label>Language: </label> <%= @movie.language %><br />
+                <label>Metascore: </label> <%= @movie.metascore %><br />
+                <label>Plot: </label> <%= @movie.plot %><br />
+                <label>Rated: </label> <%= @movie.rated %><br />
+                <label>Released: </label> <%= @movie.released %><br />
+                <label>Runtime: </label> <%= @movie.runtime %><br />
+                <label>Writer: </label> <%= @movie.writer %><br />
+                <label>OMRv Rating: </label> <%= @movie.imdbrating %><br />
+                <label>OMRv Votes: </label> <%= @movie.imdbvotes %></p><hr />
+                
+                <% if @reviewed%>
+                    <% @movie.reviews.each do |review| %>
+                        <blockquote>
+                            <p><%= review.comment %></p>
+                            <i><%= review.user.username %></i>
+                        </blockquote>
+                    <% end %>
+                <% else %>
+                    <% @movie.reviews.each do |review| %>
+                        <blockquote>
+                            <p><%= review.comment %></p>
+                            <i><%= review.user.username %></i>
+                        </blockquote>
+                    <% end %>
+                    <form id="rating-form" action="/reviews" method="POST">
+                        <input type="hidden" name="authenticity_token" value=${window._token} />
+                        <input type="hidden" name="imdbid" value=<%= @movie.imdbid %> />
+                        <textarea name= "review[comment]" class="form-control" placeholder="Your movie review"/></textarea>
+                        <br />
+                        <input type="submit" class="btn btn-success pull-right" />
+                    </form>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
