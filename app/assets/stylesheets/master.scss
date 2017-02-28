@@ -108,3 +108,127 @@ body {
         
     }
 }
+
+
+
+/*  Devise sections  */
+/*------------------*/
+.log_in {
+    margin: 0 auto;
+    position: relative;
+    
+    .col-md-4 {
+        margin: 0 auto;
+        max-width: 350px;
+        background-color: #fff;
+        border: 1px solid #e6e6e6;
+        border-radius: 5px;
+        text-align: center;
+        padding-bottom: 20px;
+        float: none;
+        
+        form {
+            width: 100%;
+            
+            .field {
+                width: 100%;
+                margin: 10px 0 10px 0;
+                
+                input {
+                    text-align: center;
+                    width: 100%;
+                }
+            }
+            
+            .actions {
+                .btn-default {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+        
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
+.edit_user {
+    margin: 0 auto;
+    position: relative;
+    
+    .col-md-4 {
+        margin: 0 auto;
+        max-width: 350px;
+        background-color: #fff;
+        border: 1px solid #e6e6e6;
+        border-radius: 5px;
+        text-align: center;
+        padding-bottom: 20px;
+        float: none;
+        
+        form {
+            width: 100%;
+            
+            .field {
+                width: 100%;
+                margin: 10px 0 10px 0;
+                
+                input {
+                    text-align: center;
+                    width: 100%;
+                }
+            }
+            
+            .actions {
+                .btn-default {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+        
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
+.sign_up {
+    margin: 0 auto;
+    position: relative;
+    
+    .col-md-4 {
+        margin: 0 auto;
+        max-width: 350px;
+        background-color: #fff;
+        border: 1px solid #e6e6e6;
+        border-radius: 5px;
+        text-align: center;
+        padding-bottom: 20px;
+        float: none;
+        
+        form {
+            width: 100%;
+            
+            .field {
+                width: 100%;
+                margin: 10px 0 10px 0;
+                
+                input {
+                    text-align: center;
+                    width: 100%;
+                }
+            }
+            
+            .actions {
+                .btn-default {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+        
+        a {
+            text-decoration: none;
+        }
+    }
+}
