@@ -57,19 +57,18 @@ body {
 
 .container {
     margin: 0 auto;
-    padding: 0;
+    padding-top: 40px;
     
     #movies {
-        margin: 40px 0;
+        margin: 0 auto;
         width: auto;
         
         img {
             width: 215px;
-            height: 316.77px;
         }
         
         .panel {
-            max-width: 235px;
+            width: 235px;
             margin-right: 30px;
             padding: 10px;
         }
@@ -79,9 +78,7 @@ body {
         }
         
         .panel-body {
-            max-height: 94px;
             text-align: center;
-            overflow: hidden;
         }
         
         .col-xs-4.col-md-4 {

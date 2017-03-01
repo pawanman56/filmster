@@ -4,9 +4,10 @@
   <title>OMRv - Filmster</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <link href="https://fonts.googleapis.com/css?family=Lobster|Playfair+Display" rel="stylesheet">
   <%= favicon_link_tag 'favicon.ico' %>
   <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lobster|Playfair+Display" rel="stylesheet">
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -38,6 +39,7 @@
   </nav>
   
   <div class="container">
+    <%= render 'shared/flash_messages' %>
     <%= yield %>
   </div>
 

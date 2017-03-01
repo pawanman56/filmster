@@ -2,6 +2,7 @@
 /* global id */
 
 $(function(){
+    
     let form = $('#movie-search');
     form.submit(function(e){
         e.preventDefault();
@@ -15,7 +16,7 @@ $(function(){
     });
     
     function displayMovies(data){
-        let container = $("#movies")
+        let container = $("#movies");
         let htmlString = "";
         
         container.empty();
@@ -90,6 +91,19 @@ $(function(){
         `;
         
         container.append(htmlString);
+        container.imagesLoaded(function(){
+            container.masonry({
+                itemSelector: '.panel',
+                fitWidth: true
+            });
+        });    
     }
+    
+    $('#movies').imagesLoaded(function(){
+        $('#movies').masonry({
+            itemSelector: '.panel',
+            fitWidth: true
+        }); 
+    });
     
 })
