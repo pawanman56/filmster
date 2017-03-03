@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
     
     def index
-        @movie = Movie.joins(:reviews)
+        @movie = Movie.includes(:reviews)
     end
     
 end

@@ -62,6 +62,12 @@ body {
     #movies {
         margin: 0 auto;
         width: auto;
+        position: relative;
+        
+        .box {
+            position: relative;
+            height: auto;
+        }
         
         img {
             width: 215px;
@@ -79,6 +85,7 @@ body {
         
         .panel-body {
             text-align: center;
+            padding-bottom: 0;
         }
         
         .col-xs-4.col-md-4 {

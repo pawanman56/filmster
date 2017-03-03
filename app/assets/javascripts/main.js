@@ -3,6 +3,13 @@
 
 $(function(){
     
+    $('#movies').imagesLoaded(function(){
+        $('#movies').masonry({
+            itemSelector: '.box',
+            fitWidth: true
+        }); 
+    });
+    
     let form = $('#movie-search');
     form.submit(function(e){
         e.preventDefault();
@@ -36,6 +43,12 @@ $(function(){
         }
         
         container.append(htmlString);
+        container.imagesLoaded(function(){
+            container.masonry({
+                itemSelector: '.box',
+                fitWidth: true
+            });
+        });
     }
     
     $("#movies").on('click', 'img', function(e){  
@@ -91,19 +104,6 @@ $(function(){
         `;
         
         container.append(htmlString);
-        container.imagesLoaded(function(){
-            container.masonry({
-                itemSelector: '.panel',
-                fitWidth: true
-            });
-        });    
     }
-    
-    $('#movies').imagesLoaded(function(){
-        $('#movies').masonry({
-            itemSelector: '.panel',
-            fitWidth: true
-        }); 
-    });
     
 })
