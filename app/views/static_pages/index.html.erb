@@ -19,7 +19,7 @@
             <div id="movies">
                 <% @movie.each do |m| %>
                     <div class="box panel panel-default pull-left">
-                        <%= link_to image_tag(m.poster == "N/A" ? "default_image.png" : m.poster), movie_path(m.id) %>
+                        <%= link_to image_tag(m.poster == "N/A" ? "default_image.png" : m.poster, "data-id" => m.imdbid), movie_path(m.imdbid) %>
                         <div class="panel-body">
                             <p><%= m.title %></p>
                             <p><%= m.year %></p>

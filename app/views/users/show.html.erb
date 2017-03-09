@@ -1,0 +1,100 @@
+<%= image_tag(@user.avatar == nil ? "no_photo.png" : @user.avatar, class: 'prof-pic-lg') %>
+<h1 class="text-center"><%= @user.username %></h1>
+<p class="text-center lead"><%= @user.introduction %></p>
+<div id="follow-button">
+    <%= render partial: 'follows', locals: {user: @user} %>
+</div>
+<ul class="user-stats">
+    <li id="user-reviews">
+        <div class="number-label"><%= "Review".pluralize(@user.reviews.count) %></div>
+        <div class="number-value"><%= @user.reviews.count %></div>
+    </li>
+    <li id="user-following">
+        <div class="number-label"><%= "Following".pluralize(@user.following_relationships.count) %></div>
+        <div class="number-value"><%= @user.following_relationships.count %></div>
+    </li>
+    <li id="user-followers">
+        <div class="number-label"><%= "Follower".pluralize(@user.followed_relationships.count) %></div>
+        <div class="number-value"><%= @user.followed_relationships.count %></div>
+    </li>
+</ul>
+<br />
+
+<div id="movies">
+    <% if @user.reviews.count < 1 %>
+        <p class="text-center">This user haven't reviewed any movies yet.</p>
+    <% else %>
+        <% @movies.each do |m| %>
+            <% if @user.reviewed?(m) %>
+                <div class="box panel panel-default pull-left">
+                    <%= link_to image_tag(m.poster == "N/A" ? "default_image.png" : m.poster, "data-id"=>m.imdbid), movie_path(m.id) %>
+                    <div class="panel-body">
+                        <p><%= m.title %></p>
+                        <p><%= m.year %></p>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+    <% end %>
+</div>
+
+<script type="text/javascript">
+    
+$(function(){
+    
+    $('#movies').imagesLoaded(function(){
+        $('#movies').masonry({
+            itemSelector: '.panel',
+            fitWidth: true
+        }); 
+    });
+    
+    let userId = <%= params[:id] %>;
+    let userData = {};
+    
+    $.ajax({
+        url: `/users/${userId}.json`,
+        type: "GET"
+    }).done(function(data){
+        userData = data;
+        console.log(userData);
+    });
+    
+    $('#user-reviews').on('click', function(e){
+        getReviews();
+    });
+    
+    function getReviews(){
+        let container = $('#movies');
+        let htmlString = "";
+        
+        if (userData.reviews.length > 0) {
+            userData.reviews.forEach(function(){
+                htmlString =
+                    `
+                        <div class="box panel panel-default pull-left">
+                            <img src=${movie["Poster"] == "N/A" ? "assets/default_image.png" : movie["Poster"]} data-id="${movie['imdbID']}" />
+                            <div class="panel-body">
+                                <p>${movie["Title"]}</p>
+                                <p>${movie["Year"]}</p>
+                            </div>
+                        </div>
+                    `;
+            });
+        } else {
+            htmlString = `<p class="text-center">This user haven't reviewed any movies yet.</p>`;
+        }
+        
+        container.empty();
+        container.append(htmlString);
+        container.imagesLoaded(function(){
+            container.masonry({
+                itemSelector: '.panel',
+                fitWidth: true
+            });
+        });
+    }
+    
+})
+    
+</script>

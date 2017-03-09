@@ -5,7 +5,7 @@ $(function(){
     
     $('#movies').imagesLoaded(function(){
         $('#movies').masonry({
-            itemSelector: '.box',
+            itemSelector: '.panel',
             fitWidth: true
         }); 
     });
@@ -34,10 +34,10 @@ $(function(){
             data["Search"].forEach(function(movie){
                 htmlString += `<div class="box panel panel-default pull-left">
                                     <img src=${movie["Poster"] == "N/A" ? "assets/default_image.png" : movie["Poster"]} data-id="${movie['imdbID']}" />
-                                        <div class="panel-body">
-                                            <p>${movie["Title"]}</p>
-                                            <p>${movie["Year"]}</p>
-                                        </div>
+                                    <div class="panel-body">
+                                        <p>${movie["Title"]}</p>
+                                        <p>${movie["Year"]}</p>
+                                    </div>
                                 </div>`;
             });
         }
@@ -51,9 +51,7 @@ $(function(){
         });
     }
     
-    $("#movies").on('click', 'img', function(e){  
-        e.preventDefault();
-        
+    $("#movies").on('click', 'img', function(e){
         let id = $(e.target).data('id');
         
         $.ajax({
@@ -63,6 +61,7 @@ $(function(){
         .done(function(data){
             displayMovie(data);
         });
+        e.preventDefault();
     });
     
     function displayMovie(data){

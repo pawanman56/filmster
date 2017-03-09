@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   
   resources :reviews
   resources :movies
+  resources :users do
+    resources :relationships, only: [:create, :destroy]
+  end
 end
