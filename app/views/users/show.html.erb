@@ -1,4 +1,4 @@
-<%= image_tag(@user.avatar == nil ? "no_photo.png" : @user.avatar, class: 'prof-pic-lg') %>
+<%= image_tag(@user.avatar == "null" ? "no_photo.png" : @user.avatar, class: 'prof-pic-lg') %>
 <h1 class="text-center"><%= @user.username %></h1>
 <p class="text-center lead"><%= @user.introduction %></p>
 <div id="follow-button">
@@ -69,20 +69,21 @@ $(function(){
         let htmlString = "";
         
         if (userData.reviews.length > 0) {
-            userData.reviews.forEach(function(){
-                htmlString =
+            userData.reviews.forEach(function(review){
+                
+                htmlString +=
                     `
                         <div class="box panel panel-default pull-left">
-                            <img src=${movie["Poster"] == "N/A" ? "assets/default_image.png" : movie["Poster"]} data-id="${movie['imdbID']}" />
+                            <img src=${review.movie.poster == "N/A" ? "default_image.png" : review.movie.poster} data-id="${review.movie.imdbid}" />
                             <div class="panel-body">
-                                <p>${movie["Title"]}</p>
-                                <p>${movie["Year"]}</p>
+                                <p>${review.movie.title}</p>
+                                <p>${review.movie.year}</p>
                             </div>
                         </div>
                     `;
             });
         } else {
-            htmlString = `<p class="text-center">This user haven't reviewed any movies yet.</p>`;
+            htmlString = `<p class="text-center">This user have not reviewed any movies yet.</p>`;
         }
         
         container.empty();
@@ -93,6 +94,68 @@ $(function(){
                 fitWidth: true
             });
         });
+    }
+    
+    $('#user-following').on('click', function(e){
+        getFollowing();
+    });
+    
+    function getFollowing(){
+        let container = $('#movies');
+        let htmlString = "";
+        
+        if (userData.following_relationships.length > 0) {
+            userData.following_relationships.forEach(function(users){
+                
+                htmlString +=
+                    `
+                        <div class="col-xs-12 col-md-6">
+                            <div class="box panel panel-default pull-left">
+                                <img src=${users.user.avatar_url == null ? "/assets/fallback/default_image.png" : users.user.avatar_url}" class="prof-pic-sm" />
+                                <p><a href=${users.user.id}>${users.user.username}</a></p>
+                                <p>${users.user.introduction == null ? "" : users.user.introduction}</p>
+                            </div>
+                        </div>
+                        <hr />
+                    `;
+            });
+        } else {
+            htmlString = `<p class="text-center">This user is not following anyone yet.</p>`;
+        }
+        
+        container.empty();
+        container.append(htmlString);
+    }
+    
+    $('#user-followers').on('click', function(e){
+        getFollowers();
+    });
+    
+    function getFollowers(){
+        let container = $('#movies');
+        let htmlString = "";
+        
+        if (userData.followed_relationships.length > 0) {
+            userData.followed_relationships.forEach(function(users){
+                
+                htmlString +=
+                    `
+                        <div class="col-xs-12 col-md-6">
+                            <div class="box panel panel-default pull-left">
+                                <img src=${users.user.avatar_url == null ? "/assets/fallback/default_image.png" : users.user.avatar_url}" class="prof-pic-sm" />
+                                <p><a href=${users.user.id}>${users.user.username}</a></p>
+                                <p>${users.user.introduction == null ? "" : users.user.introduction}</p>
+                            </div>
+                        </div>
+                        <hr />
+                    `;
+            });
+        } else {
+            htmlString = `<p class="text-center">This user is not followed by anyone yet.</p>`;
+        }
+        
+        container.empty();
+        container.append(htmlString);
     }
     
 })

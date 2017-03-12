@@ -7,6 +7,15 @@
   display: block;
 }
 
+img.prof-pic-sm {
+  border-radius: 100%;
+  border: 2px solid #fff;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.1);
+  width: 80px;
+  margin: auto;
+  display: block;
+}
+
 .user-stats {
   margin: 0 auto 10px;
   padding: 0;
@@ -53,14 +62,15 @@
     font-weight: 600;
   }
   
-  #btn-follow {
+  .btn-follow {
     background-color: #1F98C7;
     &:hover {
       color: #ffffff;
     }
   }
   
-  #btn-unfollow {
+  .btn-unfollow {
+    margin: 15px 0;
     &:hover {
       color: #ffffff;
       background-color: #e81c4f;
