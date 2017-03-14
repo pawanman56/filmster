@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :followed_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following_users, through: :following_relationships, source: :followed
   has_many :followed_users, through: :followed_relationships, source: :follower
+  has_many :votes
   
   def reviewed?(movie)
     reviews.exists?(movie_id: movie.id)
@@ -26,6 +27,10 @@ class User < ActiveRecord::Base
   
   def following?(user)
     return true if following_relationships.exists?(followed_id: user.id)
+  end
+  
+  def voted_up_on?(review)
+    votes.exists?(review_id: review.id)
   end
   
 end

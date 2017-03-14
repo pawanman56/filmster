@@ -1,0 +1,14 @@
+<% if user_signed_in? %>
+  <span class="review_like">
+    <% if current_user.voted_up_on? review %>
+      <%= link_to '<i class="fa fa-star fa-2x" aria-hidden="true"></i>'.html_safe, review_vote_path(review_id: review.id, user_id: current_user.id, id: current_user.votes.find_by(review_id: review.id)), method: :delete, remote: true %>
+    <% else %>
+      <%= link_to '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>'.html_safe, review_votes_path(review_id: review.id), method: :post, remote: true %>
+    <% end %>
+    <%= pluralize review.votes.size, "vote" %>
+  </span>
+<% else %>
+  <span class="review_like">
+    <i class="fa fa-heart-o" aria-hidden="true"></i> <%= pluralize review.votes.size, "vote" %>
+  </span>
+<% end %>

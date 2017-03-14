@@ -63,14 +63,14 @@ body {
         margin: 0 auto;
         width: auto;
         
-        img {
-            width: 215px;
-        }
-        
         .panel {
             width: 235px;
             margin-right: 30px;
             padding: 10px;
+            
+            img {
+                width: 215px;
+            }
         }
         
         .panel-default {
@@ -104,6 +104,19 @@ body {
             }
         }
         
+    }
+}
+
+/*  Review Vote*/
+/*-------------*/
+.review-vote {
+    span {
+        background: none;
+        color: #000;
+    }
+    
+    i.fa.fa-star.fa-2x {
+        color: #e6c02c;
     }
 }
 

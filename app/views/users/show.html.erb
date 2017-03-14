@@ -1,4 +1,4 @@
-<%= image_tag(@user.avatar == "null" ? "no_photo.png" : @user.avatar, class: 'prof-pic-lg') %>
+<%= image_tag(@user.avatar_url == nil ? "fallback/no_photo.png" : @user.avatar, class: 'prof-pic-lg') %>
 <h1 class="text-center"><%= @user.username %></h1>
 <p class="text-center lead"><%= @user.introduction %></p>
 <div id="follow-button">
@@ -39,7 +39,7 @@
 </div>
 
 <script type="text/javascript">
-    
+ 
 $(function(){
     
     $('#movies').imagesLoaded(function(){
@@ -109,14 +109,15 @@ $(function(){
                 
                 htmlString +=
                     `
-                        <div class="col-xs-12 col-md-6">
-                            <div class="box panel panel-default pull-left">
-                                <img src=${users.user.avatar_url == null ? "/assets/fallback/default_image.png" : users.user.avatar_url}" class="prof-pic-sm" />
-                                <p><a href=${users.user.id}>${users.user.username}</a></p>
-                                <p>${users.user.introduction == null ? "" : users.user.introduction}</p>
-                            </div>
+                        <div class="col-xs-12 col-md-6 col-md-offset-3">
+                            <ul class="user-relationship-list">
+                                <li>
+                                    <img src=${users.user.avatar_url == null ? "/assets/fallback/default_image.png" : users.user.avatar_url}" class="prof-pic-sm" />
+                                <a href=${users.user.id}>${users.user.username}</a>
+                                <p>${users.user.introduction == null ? "" : users.user.introduction}<p>
+                                </li><hr />
+                            </ul>
                         </div>
-                        <hr />
                     `;
             });
         } else {
@@ -140,14 +141,15 @@ $(function(){
                 
                 htmlString +=
                     `
-                        <div class="col-xs-12 col-md-6">
-                            <div class="box panel panel-default pull-left">
-                                <img src=${users.user.avatar_url == null ? "/assets/fallback/default_image.png" : users.user.avatar_url}" class="prof-pic-sm" />
-                                <p><a href=${users.user.id}>${users.user.username}</a></p>
-                                <p>${users.user.introduction == null ? "" : users.user.introduction}</p>
-                            </div>
+                        <div class="col-xs-12 col-md-6 col-md-offset-3">
+                            <ul class="user-relationship-list">
+                                <li>
+                                    <img src=${users.user.avatar_url == null ? "/assets/fallback/default_image.png" : users.user.avatar_url}" class="prof-pic-sm" />
+                                <a href=${users.user.id}>${users.user.username}</a>
+                                <p>${users.user.introduction == null ? "" : users.user.introduction}<p>
+                                </li><hr />
+                            </ul>
                         </div>
-                        <hr />
                     `;
             });
         } else {
