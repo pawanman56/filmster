@@ -7,4 +7,10 @@ class UserMailer < ApplicationMailer
         mail(to: email_with_name, subject: 'Welcome to Online Movie Review(OMRv).')
     end
     
+    def followedEmail(user, current_user)
+        @user = user
+        @current_user = current_user
+        mail(to: @user.email, subject: 'Someone just followed you.')
+    end
+    
 end
