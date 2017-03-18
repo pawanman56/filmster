@@ -28,6 +28,7 @@
       <div class="collapse navbar-collapse" id="collapse">
         <ul class='nav navbar-nav navbar-right'>
           <% if user_signed_in? %>
+            <li><%= link_to 'Timeline', timeline_path %></li>
             <li><%= link_to 'Profile', user_path(current_user.id) %></li>
             <li><%= link_to 'Edit User', edit_user_registration_path %></li>
             <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>

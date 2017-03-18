@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   resources :users do
     resources :relationships, only: [:create, :destroy]
   end
+  
+  get 'timeline' => 'users#timeline'
 end

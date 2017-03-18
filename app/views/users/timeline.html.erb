@@ -1,0 +1,63 @@
+<h1 class="text-center">Timeline</h1>
+
+<div id="movies">
+</div>
+
+<script type="text/javascript">
+
+$(function(){
+    $('#movies').imagesLoaded(function(){
+        $('#movies').masonry({
+            itemSelector: '.panel',
+            fitWidth: true
+        });
+    });
+    
+    let userData = {};
+    
+    $.ajax({
+        url: '/timeline.json',
+        type: "GET"
+    })
+    .done(function(data){
+        //userData = data;
+        displayTimeline(data);
+        console.log(data);
+    });
+    
+    function displayTimeline(dataObject)
+    {
+        let $container = $("#movies");
+        let htmlString = "";
+        
+        dataObject.reviews.forEach(function(review){
+            htmlString +=
+                    `
+                        <div class="box panel panel-default pull-left">
+                            <a href="/movies/${review.movie_id}">
+                                <img src=${review.movie.poster == "N/A" ? "default_image.png" : review.movie.poster} data-id="${review.movie.imdbid}" />
+                            </a>
+                            <div class="panel-body">
+                                <p>${review.movie.title}</p>
+                                <p>${review.movie.year}</p><hr />
+                                <blockquote>
+                                    <p>${review.comment}</p>
+                                    <i><a href="/users/${review.user.id}">${review.user.username}</a></i>
+                                </blockquote>
+                            </div>
+                        </div>
+                    `;
+        });
+        
+        $container.empty();
+        $container.append(htmlString);
+        $container.imagesLoaded(function(){
+            $container.masonry({
+                itemSelector: ".panel",
+                fitWidth: true
+            });
+        });
+    }
+});
+  
+</script>
