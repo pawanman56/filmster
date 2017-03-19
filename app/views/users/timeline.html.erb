@@ -34,7 +34,7 @@ $(function(){
             htmlString +=
                     `
                         <div class="box panel panel-default pull-left">
-                            <a href="/movies/${review.movie_id}">
+                            <a href="/movies/${review.movie.id}">
                                 <img src=${review.movie.poster == "N/A" ? "default_image.png" : review.movie.poster} data-id="${review.movie.imdbid}" />
                             </a>
                             <div class="panel-body">

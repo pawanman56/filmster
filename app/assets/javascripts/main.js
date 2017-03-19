@@ -26,8 +26,6 @@ $(function(){
         let container = $("#movies");
         let htmlString = "";
         
-        container.empty();
-        
         if (data["Response"] == "False") {
             htmlString = `<div class="alert alert-danger text-center" role="alert">${data["Error"]}</div>`;
         } else {
@@ -42,6 +40,7 @@ $(function(){
             });
         }
         
+        container.empty();
         container.append(htmlString);
         container.imagesLoaded(function(){
             container.masonry({
@@ -67,8 +66,6 @@ $(function(){
     function displayMovie(data){
         let container = $("#movies");
         let htmlString = "";
-        
-        container.empty();
         
         htmlString +=
         `<div class="col-xs-4 col-md-4">
@@ -102,6 +99,7 @@ $(function(){
         </div>
         `;
         
+        container.empty();
         container.append(htmlString);
     }
     

@@ -13,20 +13,39 @@
             </form>
         </div>
     </div>
+    <br clear="all" />
     
-    <div class="col-xs-12 col-xs-8">
-        <div class="container">
-            <div id="movies">
-                <% @movie.each do |m| %>
-                    <div class="box panel panel-default pull-left">
-                        <%= link_to image_tag(m.poster == "N/A" ? "default_image.png" : m.poster, "data-id" => m.imdbid), movie_path(m.id) %>
-                        <div class="panel-body">
-                            <p><%= m.title %></p>
-                            <p><%= m.year %></p>
-                        </div>
-                    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-md-3 pull-left">
+                <h2 class="text-center" style="background-color: #fff; margin-bottom: 5px;" >Recent Reviews</h2>
+                <% @recent_reviews.each do |r| %>
+                    <ul class="recent-reviews-list">
+                        <li>
+                            <p><%= link_to r.movie.title, movie_path(r.movie.id) %></p>
+                            <p><%= r.comment %><p>
+                            -<%= link_to r.user.username,  user_path(r.user.id) %>
+                        </li>
+                    </ul><hr />
                 <% end %>
             </div>
-        </div>
+            
+            <div class="col-xs-12 col-md-8 pull-left">
+                <div class="container">
+                    <div id="movies">
+                        <% @movie.each do |m| %>
+                            <div class="box panel panel-default pull-left">
+                                <%= link_to image_tag(m.poster == "N/A" ? "default_image.png" : m.poster, "data-id" => m.imdbid), movie_path(m.id) %>
+                                <div class="panel-body">
+                                    <p><%= m.title %></p>
+                                    <p><%= m.year %></p>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>    
     </div>
+    
 </div>

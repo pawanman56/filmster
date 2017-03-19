@@ -74,7 +74,7 @@ $(function(){
                 htmlString +=
                     `
                         <div class="box panel panel-default pull-left">
-                            <img src=${review.movie.poster == "N/A" ? "default_image.png" : review.movie.poster} data-id="${review.movie.imdbid}" />
+                            <img src=${review.movie.poster == "N/A" ? "/assets/default_image.png" : review.movie.poster} data-id="${review.movie.imdbid}" />
                             <div class="panel-body">
                                 <p>${review.movie.title}</p>
                                 <p>${review.movie.year}</p>
@@ -112,7 +112,7 @@ $(function(){
                         <div class="col-xs-12 col-md-6 col-md-offset-3">
                             <ul class="user-relationship-list">
                                 <li>
-                                    <img src=${users.user.avatar_url == null ? "/assets/fallback/default_image.png" : users.user.avatar_url} class="prof-pic-sm" />
+                                    <img src=${users.user.avatar_url == null ? "fallback/default_image.png" : users.user.avatar_url} class="prof-pic-sm" />
                                     <a href=${users.user.id}>${users.user.username}</a>
                                     <p>${users.user.introduction == null ? "" : users.user.introduction}<p>
                                 </li><hr />
@@ -144,7 +144,7 @@ $(function(){
                         <div class="col-xs-12 col-md-6 col-md-offset-3">
                             <ul class="user-relationship-list">
                                 <li>
-                                    <img src=${users.user.avatar_url == null ? "/assets/fallback/default_image.png" : users.user.avatar_url} class="prof-pic-sm" />
+                                    <img src=${users.user.avatar_url == null ? "fallback/default_image.png" : users.user.avatar_url} class="prof-pic-sm" />
                                     <a href=${users.user.id}>${users.user.username}</a>
                                     <p>${users.user.introduction == null ? "" : users.user.introduction}<p>
                                 </li><hr />

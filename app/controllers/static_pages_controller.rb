@@ -1,7 +1,8 @@
 class StaticPagesController < ApplicationController
     
     def index
-        @movie = Movie.includes(:reviews)
+        @movie = Movie.recent
+        @recent_reviews = Review.recent
     end
     
 end
