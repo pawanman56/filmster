@@ -54,65 +54,63 @@ body {
         }
     }
 }
-
-.container {
+    
+#movies {
+    margin: 0 auto;
     padding-top: 40px;
     
-    #movies {
+    .panel {
+        margin: 0 auto;
+        width: 219px;
+        margin-bottom: 10px;
+        background: none;
         
-        .panel {
-            margin: 0 auto;
-            width: 235px;
-            margin-bottom: 10px;
-            padding: 10px;
-            background: none;
-            
-            img {
-                width: 215px;
-            }
-        }
-        
-        .panel-default {
-            border: none;
-            box-shadow: none;
-        }
-        
-        .panel-body {
+        img {
             width: 215px;
-            text-align: center;
-            padding-bottom: 0;
-            background-color: #fff;
         }
-        
-        .col-xs-4.col-md-4 {
-            padding-bottom: 20px;
-            
-            img {
-                -webkit-box-shadow:rgba(35,35,50,0.8) 0px 0px 11px -2px;
-            	-moz-box-shadow:rgba(35,35,50,0.8) 0px 0px 11px -2px;	
-            	box-shadow:rgba(35,35,50,0.8) 0px 0px 11px -2px;
-            	width: 215px;
-            }
-        }
-        
-        .col-xs-6.col-md-8{
-            background-color: #ffffff;
-            padding-top: 20px;
-            padding-bottom: 20px;
-        }
-        
-        @media screen and (max-width: 775px) {
-            .col-xs-6.col-md-8 {
-                width: 100%;
-            }
-        }
-        
     }
     
-    @media screen and (max-width: 768px) {
-        #movies {
-            margin: 0 auto;
+    .panel-default {
+        border: 2px solid #ddd;
+    }
+    
+    .panel-body {
+        width: 215px;
+        text-align: center;
+        padding-bottom: 0;
+        background-color: #fff;
+    }
+    
+    .col-xs-4.col-md-4 {
+        margin: 0 auto;
+        padding-bottom: 20px;
+        
+        img {
+            -webkit-box-shadow:rgba(35,35,50,0.8) 0px 0px 11px -2px;
+        	-moz-box-shadow:rgba(35,35,50,0.8) 0px 0px 11px -2px;	
+        	box-shadow:rgba(35,35,50,0.8) 0px 0px 11px -2px;
+        	width: 215px;
         }
+    }
+    
+    .col-xs-6.col-md-8{
+        margin: 0 auto;
+        background-color: #ffffff;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    
+    @media screen and (max-width: 775px) {
+        .col-xs-6.col-md-8 {
+            width: 100%;
+        }
+    }
+    
+}
+
+@media screen and (max-width: 768px) {
+    #movies {
+        margin: 0 auto;
     }
 }
 

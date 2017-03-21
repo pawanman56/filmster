@@ -6,6 +6,7 @@ $(function(){
     $('#movies').imagesLoaded(function(){
         $('#movies').masonry({
             itemSelector: '.panel',
+            gutter: 20,
             fitWidth: true
         }); 
     });
@@ -44,7 +45,8 @@ $(function(){
         container.append(htmlString);
         container.imagesLoaded(function(){
             container.masonry({
-                itemSelector: '.box',
+                itemSelector: '.panel',
+                gutter: 20,
                 fitWidth: true
             });
         });
